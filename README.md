@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Database design related to dairy lac is placed in text file located at app/views/welcome/index.html.erb
 
-Things you may want to cover:
+on running rails app, above page will be rendered
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To Run rails app
+- Install RVM
+- Install ruby(version: 2.5.3)
+- install Rails (version: 5.2.2)
+- run: rails s
+- go to localhost:3000
