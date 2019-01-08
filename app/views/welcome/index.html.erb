@@ -1,0 +1,90 @@
+<h1>Database design related to dairy lac</h1>
+<pre>
+  <b>Table: Users</b>
+  id: primary key
+  name: string
+  mobile_number: bigint
+  recipient_name: string
+  recipient_mobile_number: bigint
+  email: string
+  encrypted_password: text
+  date_of_birth: DateTime
+  address_region: text
+  address_phase: text
+  address_block: text
+  address_other_details: text
+  bill_amount: decimal
+  due_amount: decimal
+  non_availability_start_date: date
+  non_availability_end_date: date
+  created_at: datetime
+  updated_at: datetime
+
+  <b>Table: Products</b>
+  id: primary key
+  name: string
+  price: decimal
+  image_file_name: image fields as per paperclip gem
+  image_file_size: image fields as per paperclip gem
+  image_content_type: image fields as per paperclip gem
+  image_updated_at: image fields as per paperclip gem
+  order_type: integer(enum type)
+    0 - repeat
+    1 - one time order
+  created_at: datetime
+  updated_at: datetime
+
+  <b>Table: Orders</b>
+  id: primary key
+  user_id: foreign key to user table
+  product_id: foreign key to product table
+  order_start_date: date
+  order_end_date: date
+  order_type: integer(enum type)
+    0 - repeat
+    1 - one time order
+  status: integer(enum type)
+    0 - cancelled
+    1 - placed
+    2 - delivered
+  monday_qty: integer
+  tuesday_qty: integer
+  wednesday_qty: integer
+  thursay_qty: integer
+  friday_qty: integer
+  saturday_qty: integer
+  sunday_qty: integer
+  qty: integer(for use when order_type: one time order)
+  created_at: datetime
+  updated_at: datetime
+
+  <b>Table: OrderChoice</b>
+  <i>This table is used when order_type is repeat to display Order Choice on front-end side</i>
+  id: primary key
+  choice_type: integer(enum type)
+    0 - Everyday
+    1 - Alternate Day
+    2 - Mon-Wed-Fri
+    3 - Mon-Fri
+    4 - Tue-Thu-Sat
+    5 - Custom
+  monday_display: boolean
+  tuesday_display: boolean
+  wednesday_display: boolean
+  thursay_display: boolean
+  friday_display: boolean
+  saturday_display: boolean
+  sunday_display: boolean
+  created_at: datetime
+  updated_at: datetime
+
+  <b>Note:</b>
+  On successfully placing of order, total amount of order will be added in bill amount and due amount in users table
+  On COD payment by customer, amount that is paid will be deducted from due amount
+
+  <b>Table: ContactUs</b>
+  timings: string
+  phone_number: text
+  email: string
+  address: text
+</pre>
